@@ -6,7 +6,24 @@
     "backend",
     "frontend"
   ],
+  "scripts": {
+    "backend:dev": "npm --workspace @ideanick/backend run dev",
+    "backend:types": "npm --workspace @ideanick/backend run types",
+    "backend:prettify": "npm --workspace @ideanick/backend run prettify",
+    "frontend:dev": "npm --workspace @ideanick/frontend run dev",
+    "frontend:types": "npm --workspace @ideanick/frontend run types",
+    "frontend:prettify": "npm --workspace @ideanick/frontend run prettify",
+    "dev": "npx npm-run-all -pcl backend:dev frontend:dev",
+    "types": "concurrently --raw \"npm run frontend:types\" \"npm run backend:types\"",
+    "prettify": "npx npm-run-all -pcl backend:prettify frontend:prettify"
+  },
   "devDependencies": {
-    "@types/cors": "^2.8.18"
+    "concurrently": "^9.1.2",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
   }
 }
